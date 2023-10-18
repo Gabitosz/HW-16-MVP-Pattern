@@ -54,14 +54,62 @@
 		032494BD2AE06F920003ED1E /* HW-16-MVP-Pattern */ = {
 			isa = PBXGroup;
 			children = (
-				032494BE2AE06F920003ED1E /* AppDelegate.swift */,
-				032494C02AE06F920003ED1E /* SceneDelegate.swift */,
-				032494C22AE06F920003ED1E /* ViewController.swift */,
-				032494C72AE06F930003ED1E /* Assets.xcassets */,
-				032494C92AE06F930003ED1E /* LaunchScreen.storyboard */,
-				032494CC2AE06F930003ED1E /* Info.plist */,
+				032494D32AE071C40003ED1E /* Resources */,
+				032494D22AE071BC0003ED1E /* Sources */,
 			);
 			path = "HW-16-MVP-Pattern";
+			sourceTree = "<group>";
+		};
+		032494D22AE071BC0003ED1E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				032494D72AE072120003ED1E /* Presenters */,
+				032494D62AE072080003ED1E /* Views */,
+				032494D52AE072000003ED1E /* Models */,
+				032494D42AE071E50003ED1E /* App */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		032494D32AE071C40003ED1E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				032494CC2AE06F930003ED1E /* Info.plist */,
+				032494C92AE06F930003ED1E /* LaunchScreen.storyboard */,
+				032494C72AE06F930003ED1E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		032494D42AE071E50003ED1E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				032494C02AE06F920003ED1E /* SceneDelegate.swift */,
+				032494BE2AE06F920003ED1E /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		032494D52AE072000003ED1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		032494D62AE072080003ED1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				032494C22AE06F920003ED1E /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		032494D72AE072120003ED1E /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,7 +330,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YX889WRPYL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "HW-16-MVP-Pattern/Info.plist";
+				INFOPLIST_FILE = "HW-16-MVP-Pattern/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -310,7 +358,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YX889WRPYL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "HW-16-MVP-Pattern/Info.plist";
+				INFOPLIST_FILE = "HW-16-MVP-Pattern/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
