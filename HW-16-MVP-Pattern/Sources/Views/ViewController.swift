@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Архитектурный паттерн MVP"
+        label.textColor = .black
         label.font = .boldSystemFont(ofSize: 26)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
     private lazy var modelButton: UIButton = {
         let modelButton = UIButton(type: .system)
         modelButton.setTitle("Model", for: .normal)
+        modelButton.setTitleColor(.blue, for: .normal)
         modelButton.backgroundColor = .init(red: 214 / 255, green: 232 / 255, blue: 213 / 255, alpha: 1)
         modelButton.layer.cornerRadius = 15
         modelButton.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +35,7 @@ class ViewController: UIViewController {
     private lazy var viewButton: UIButton = {
         let viewButton = UIButton(type: .system)
         viewButton.setTitle("View", for: .normal)
+        viewButton.setTitleColor(.blue, for: .normal)
         viewButton.backgroundColor = .init(red: 255 / 255, green: 240 / 255, blue: 206 / 255, alpha: 1)
         viewButton.layer.cornerRadius = 15
         viewButton.translatesAutoresizingMaskIntoConstraints = false
@@ -43,11 +46,26 @@ class ViewController: UIViewController {
     private lazy var presenterButton: UIButton = {
         let presenterButton = UIButton(type: .system)
         presenterButton.setTitle("Presenter", for: .normal)
+        presenterButton.setTitleColor(.blue, for: .normal)
         presenterButton.backgroundColor = .init(red: 225 / 255, green: 213 / 255, blue: 230 / 255, alpha: 1)
         presenterButton.layer.cornerRadius = 15
         presenterButton.translatesAutoresizingMaskIntoConstraints = false
         return presenterButton
         
+    }()
+    
+    private lazy var rightArrowView: UIImageView = {
+        let rightArrowView = UIImageView()
+        rightArrowView.image = UIImage(named: "arrow.up.arrow-right")
+        rightArrowView.translatesAutoresizingMaskIntoConstraints = false
+        return rightArrowView
+    }()
+    
+    private lazy var leftArrowView: UIImageView = {
+        let leftArrowView = UIImageView()
+        leftArrowView.image = UIImage(named: "arrow.up.arrow-left")
+        leftArrowView.translatesAutoresizingMaskIntoConstraints = false
+        return leftArrowView
     }()
     
     // MARK: Lifecycle
@@ -67,7 +85,7 @@ class ViewController: UIViewController {
     }
     
     private func setupHierarchy() {
-        let views = [titleLabel, modelButton, viewButton, presenterButton]
+        let views = [titleLabel, modelButton, viewButton, presenterButton, rightArrowView, leftArrowView]
         views.forEach { view.addSubview($0) }
     }
     
@@ -92,6 +110,16 @@ class ViewController: UIViewController {
             presenterButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             presenterButton.widthAnchor.constraint(equalToConstant: 120),
             presenterButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            rightArrowView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 35),
+            rightArrowView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -100),
+            rightArrowView.widthAnchor.constraint(equalToConstant: 50),
+            rightArrowView.heightAnchor.constraint(equalToConstant: 50),
+            
+            leftArrowView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 35),
+            leftArrowView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 100),
+            leftArrowView.widthAnchor.constraint(equalToConstant: 50),
+            leftArrowView.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 
