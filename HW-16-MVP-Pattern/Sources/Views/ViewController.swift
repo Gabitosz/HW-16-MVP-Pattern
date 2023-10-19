@@ -111,15 +111,15 @@ class ViewController: UIViewController {
             presenterButton.widthAnchor.constraint(equalToConstant: 120),
             presenterButton.heightAnchor.constraint(equalToConstant: 50),
             
-            rightArrowView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 35),
+            rightArrowView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 45),
             rightArrowView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -100),
-            rightArrowView.widthAnchor.constraint(equalToConstant: 50),
-            rightArrowView.heightAnchor.constraint(equalToConstant: 50),
+            rightArrowView.widthAnchor.constraint(equalToConstant: 35),
+            rightArrowView.heightAnchor.constraint(equalToConstant: 35),
             
-            leftArrowView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 35),
+            leftArrowView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 45),
             leftArrowView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 100),
-            leftArrowView.widthAnchor.constraint(equalToConstant: 50),
-            leftArrowView.heightAnchor.constraint(equalToConstant: 50),
+            leftArrowView.widthAnchor.constraint(equalToConstant: 35),
+            leftArrowView.heightAnchor.constraint(equalToConstant: 35),
         ])
     }
 
