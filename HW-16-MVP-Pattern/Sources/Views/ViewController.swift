@@ -63,7 +63,7 @@ class ViewController: UIViewController {
     // MARK: Setup
     
     private func setupView() {
-        view.backgroundColor = .systemBackground
+        fillgradient()
     }
     
     private func setupHierarchy() {
@@ -96,4 +96,20 @@ class ViewController: UIViewController {
     }
 
 }
+
+extension ViewController {
+    
+    // Заливка фона
+    private func fillgradient() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        let firstColor = UIColor(red: 247 / 255, green: 230 / 255, blue: 117 / 255, alpha: 1)
+        let secondColor = UIColor(red: 247 / 255, green: 194 / 255, blue: 141 / 255, alpha: 1)
+        let thirdColor = UIColor(red: 227 / 255, green: 131 / 255, blue: 154 / 255, alpha: 1)
+        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor, thirdColor.cgColor]
+        gradientLayer.locations = [0.3, 0.6, 0.9]
+        view.layer.addSublayer(gradientLayer)
+    }
+}
+
 
