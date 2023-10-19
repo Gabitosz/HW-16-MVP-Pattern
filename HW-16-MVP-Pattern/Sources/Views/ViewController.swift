@@ -40,6 +40,16 @@ class ViewController: UIViewController {
         
     }()
     
+    private lazy var presenterButton: UIButton = {
+        let presenterButton = UIButton(type: .system)
+        presenterButton.setTitle("Presenter", for: .normal)
+        presenterButton.backgroundColor = .init(red: 225 / 255, green: 213 / 255, blue: 230 / 255, alpha: 1)
+        presenterButton.layer.cornerRadius = 15
+        presenterButton.translatesAutoresizingMaskIntoConstraints = false
+        return presenterButton
+        
+    }()
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -57,7 +67,7 @@ class ViewController: UIViewController {
     }
     
     private func setupHierarchy() {
-        let views = [titleLabel, modelButton, viewButton]
+        let views = [titleLabel, modelButton, viewButton, presenterButton]
         views.forEach { view.addSubview($0) }
     }
     
@@ -69,14 +79,19 @@ class ViewController: UIViewController {
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             modelButton.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
-            modelButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
+            modelButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
             modelButton.widthAnchor.constraint(equalToConstant: 120),
             modelButton.heightAnchor.constraint(equalToConstant: 50),
             
             viewButton.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
-            viewButton.leftAnchor.constraint(equalTo: modelButton.rightAnchor, constant: 50),
+            viewButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
             viewButton.widthAnchor.constraint(equalToConstant: 120),
             viewButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            presenterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            presenterButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            presenterButton.widthAnchor.constraint(equalToConstant: 120),
+            presenterButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 
