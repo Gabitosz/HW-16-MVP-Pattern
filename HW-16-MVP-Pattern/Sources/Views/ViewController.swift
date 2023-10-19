@@ -30,6 +30,16 @@ class ViewController: UIViewController {
         
     }()
     
+    private lazy var viewButton: UIButton = {
+        let viewButton = UIButton(type: .system)
+        viewButton.setTitle("View", for: .normal)
+        viewButton.backgroundColor = .init(red: 255 / 255, green: 240 / 255, blue: 206 / 255, alpha: 1)
+        viewButton.layer.cornerRadius = 15
+        viewButton.translatesAutoresizingMaskIntoConstraints = false
+        return viewButton
+        
+    }()
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -47,19 +57,26 @@ class ViewController: UIViewController {
     }
     
     private func setupHierarchy() {
-        let views = [titleLabel, modelButton]
+        let views = [titleLabel, modelButton, viewButton]
         views.forEach { view.addSubview($0) }
     }
     
     private func setupLayout() {
         
         NSLayoutConstraint.activate([
+            
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             modelButton.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
             modelButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
             modelButton.widthAnchor.constraint(equalToConstant: 120),
             modelButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            viewButton.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
+            viewButton.leftAnchor.constraint(equalTo: modelButton.rightAnchor, constant: 50),
+            viewButton.widthAnchor.constraint(equalToConstant: 120),
+            viewButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 
