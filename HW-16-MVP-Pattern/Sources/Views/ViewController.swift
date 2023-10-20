@@ -13,11 +13,12 @@ class ViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Архитектурный паттерн MVP"
+        label.text = "Архитектурный паттерн \n MVP"
         label.textColor = .black
         label.font = .boldSystemFont(ofSize: 26)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         return label
     }()
     
