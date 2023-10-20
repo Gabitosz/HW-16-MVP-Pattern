@@ -11,9 +11,8 @@ class ModalViewController: UIViewController {
     
     // MARK: Outlets
     
-    private lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Архитектурный паттерн \n MVP"
         label.font = .boldSystemFont(ofSize: 26)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,9 +20,8 @@ class ModalViewController: UIViewController {
         return label
     }()
     
-    private lazy var descriptionLabel: UILabel = {
+    lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Архитектурный паттерн  MVP Архитектурный паттерн MVP Архитектурный паттерн MVP Архитектурный паттерн MVP Архитектурный паттерн  MVP"
         label.font = .boldSystemFont(ofSize: 14)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -63,5 +61,5 @@ class ModalViewController: UIViewController {
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
-
+    
 }

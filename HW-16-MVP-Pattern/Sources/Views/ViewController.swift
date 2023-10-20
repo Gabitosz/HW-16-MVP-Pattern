@@ -7,11 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ComponentPresenterDelegate  {
 
+    
     // MARK: Outlets
     
     private let modalViewController = ModalViewController()
+    private let presenter = ComponentPresenter()
+    private var components = [String: Component]()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -81,7 +84,8 @@ class ViewController: UIViewController {
         setupView()
         setupHierarchy()
         setupLayout()
-        
+        presenter.setViewDelegate(delegate: self)
+        presenter.getComponentInfo()
     }
     
     // MARK: Setup
@@ -95,24 +99,38 @@ class ViewController: UIViewController {
         views.forEach { view.addSubview($0) }
     }
     
+    // MARK: Presenter Delegate
+    
+    func presentComponent(components: [String: Component]) {
+        self.components = components
+    }
+    
     // MARK: Actions
+    
+    
+    func presentComponentInfo(title: String, description: String) {
+        modalViewController.titleLabel.text = title
+        modalViewController.descriptionLabel.text = description
+    }
     
     @IBAction func modelOpenModalButtonTapped(_ sender: UIButton) {
         present(modalViewController, animated: true, completion: nil)
-        
+        guard let component = components["Model"] else { return }
+        presenter.didTap(component: component)
     }
     
     @IBAction func viewOpenModalButtonTapped(_ sender: UIButton) {
-        
-        
+        present(modalViewController, animated: true, completion: nil)
+        guard let component = components["View"] else { return }
+        presenter.didTap(component: component)
     }
     
     @IBAction func presenterOpenModalButtonTapped(_ sender: UIButton) {
-        
-        
+        present(modalViewController, animated: true, completion: nil)
+        guard let component = components["Presenter"] else { return }
+        presenter.didTap(component: component)
     }
-    
-    
+
     private func setupLayout() {
         
         NSLayoutConstraint.activate([
