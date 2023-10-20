@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     // MARK: Outlets
     
+    private let modalViewController = ModalViewController()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Архитектурный паттерн \n MVP"
@@ -24,6 +26,7 @@ class ViewController: UIViewController {
     
     private lazy var modelButton: UIButton = {
         let modelButton = UIButton(type: .system)
+        modelButton.addTarget(self, action: #selector(modelOpenModalButtonTapped), for: .touchUpInside)
         modelButton.setTitle("Model", for: .normal)
         modelButton.setTitleColor(.blue, for: .normal)
         modelButton.backgroundColor = .init(red: 214 / 255, green: 232 / 255, blue: 213 / 255, alpha: 1)
@@ -35,6 +38,7 @@ class ViewController: UIViewController {
     
     private lazy var viewButton: UIButton = {
         let viewButton = UIButton(type: .system)
+        viewButton.addTarget(self, action: #selector(viewOpenModalButtonTapped), for: .touchUpInside)
         viewButton.setTitle("View", for: .normal)
         viewButton.setTitleColor(.blue, for: .normal)
         viewButton.backgroundColor = .init(red: 255 / 255, green: 240 / 255, blue: 206 / 255, alpha: 1)
@@ -46,6 +50,7 @@ class ViewController: UIViewController {
     
     private lazy var presenterButton: UIButton = {
         let presenterButton = UIButton(type: .system)
+        presenterButton.addTarget(self, action: #selector(presenterOpenModalButtonTapped), for: .touchUpInside)
         presenterButton.setTitle("Presenter", for: .normal)
         presenterButton.setTitleColor(.blue, for: .normal)
         presenterButton.backgroundColor = .init(red: 225 / 255, green: 213 / 255, blue: 230 / 255, alpha: 1)
@@ -89,6 +94,24 @@ class ViewController: UIViewController {
         let views = [titleLabel, modelButton, viewButton, presenterButton, rightArrowView, leftArrowView]
         views.forEach { view.addSubview($0) }
     }
+    
+    // MARK: Actions
+    
+    @IBAction func modelOpenModalButtonTapped(_ sender: UIButton) {
+        present(modalViewController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func viewOpenModalButtonTapped(_ sender: UIButton) {
+        
+        
+    }
+    
+    @IBAction func presenterOpenModalButtonTapped(_ sender: UIButton) {
+        
+        
+    }
+    
     
     private func setupLayout() {
         
