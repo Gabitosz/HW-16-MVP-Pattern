@@ -7,9 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ComponentPresenterDelegate  {
 
+    
     // MARK: Outlets
+    
+    private let modalViewController = ModalViewController()
+    private let presenter = ComponentPresenter()
+    private var components = [String: Component]()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -24,6 +29,7 @@ class ViewController: UIViewController {
     
     private lazy var modelButton: UIButton = {
         let modelButton = UIButton(type: .system)
+        modelButton.addTarget(self, action: #selector(modelOpenModalButtonTapped), for: .touchUpInside)
         modelButton.setTitle("Model", for: .normal)
         modelButton.setTitleColor(.blue, for: .normal)
         modelButton.backgroundColor = .init(red: 214 / 255, green: 232 / 255, blue: 213 / 255, alpha: 1)
@@ -35,6 +41,7 @@ class ViewController: UIViewController {
     
     private lazy var viewButton: UIButton = {
         let viewButton = UIButton(type: .system)
+        viewButton.addTarget(self, action: #selector(viewOpenModalButtonTapped), for: .touchUpInside)
         viewButton.setTitle("View", for: .normal)
         viewButton.setTitleColor(.blue, for: .normal)
         viewButton.backgroundColor = .init(red: 255 / 255, green: 240 / 255, blue: 206 / 255, alpha: 1)
@@ -46,6 +53,7 @@ class ViewController: UIViewController {
     
     private lazy var presenterButton: UIButton = {
         let presenterButton = UIButton(type: .system)
+        presenterButton.addTarget(self, action: #selector(presenterOpenModalButtonTapped), for: .touchUpInside)
         presenterButton.setTitle("Presenter", for: .normal)
         presenterButton.setTitleColor(.blue, for: .normal)
         presenterButton.backgroundColor = .init(red: 225 / 255, green: 213 / 255, blue: 230 / 255, alpha: 1)
@@ -76,7 +84,8 @@ class ViewController: UIViewController {
         setupView()
         setupHierarchy()
         setupLayout()
-        
+        presenter.setViewDelegate(delegate: self)
+        presenter.getComponentInfo()
     }
     
     // MARK: Setup
@@ -90,6 +99,38 @@ class ViewController: UIViewController {
         views.forEach { view.addSubview($0) }
     }
     
+    // MARK: Presenter Delegate
+    
+    func presentComponent(components: [String: Component]) {
+        self.components = components
+    }
+    
+    // MARK: Actions
+    
+    
+    func presentComponentInfo(title: String, description: String) {
+        modalViewController.titleLabel.text = title
+        modalViewController.descriptionLabel.text = description
+    }
+    
+    @IBAction func modelOpenModalButtonTapped(_ sender: UIButton) {
+        present(modalViewController, animated: true, completion: nil)
+        guard let component = components["Model"] else { return }
+        presenter.didTap(component: component)
+    }
+    
+    @IBAction func viewOpenModalButtonTapped(_ sender: UIButton) {
+        present(modalViewController, animated: true, completion: nil)
+        guard let component = components["View"] else { return }
+        presenter.didTap(component: component)
+    }
+    
+    @IBAction func presenterOpenModalButtonTapped(_ sender: UIButton) {
+        present(modalViewController, animated: true, completion: nil)
+        guard let component = components["Presenter"] else { return }
+        presenter.didTap(component: component)
+    }
+
     private func setupLayout() {
         
         NSLayoutConstraint.activate([
