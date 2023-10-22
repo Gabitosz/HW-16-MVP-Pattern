@@ -6,30 +6,27 @@
 //
 
 import Foundation
-import UIKit
-
-typealias PresenterDelegate = ComponentPresenterDelegate & UIViewController
 
 protocol ComponentPresenterDelegate: AnyObject {
-    func presentComponent(components: [String: Component])
+    func presentComponents(components: [String: Component])
     func presentComponentInfo(title: String, description: String)
 }
 
-let componentsData = Component.data
+protocol ViewDelegate: AnyObject {
+    func getComponentInfo()
+    func didTap(component: Component)
+}
+
+class ComponentPresenter: ViewDelegate {
     
-class ComponentPresenter {
+    weak var delegate: ComponentPresenterDelegate?
+    private let componentsData = Component.data
     
-    weak var delegate: PresenterDelegate?
-    
-    public func getComponentInfo() {
-        self.delegate?.presentComponent(components: componentsData)
+    func getComponentInfo() {
+        self.delegate?.presentComponents(components: componentsData)
     }
     
-    public func setViewDelegate(delegate: PresenterDelegate) {
-        self.delegate = delegate
-    }
-    
-    public func didTap(component: Component) {
+    func didTap(component: Component) {
         delegate?.presentComponentInfo(title: component.title, description: component.description)
     }
 }
