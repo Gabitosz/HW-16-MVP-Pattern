@@ -14,7 +14,7 @@ struct Component {
 
 extension Component {
     static var data: [String: Component] = ["Model":
-                                                Component(title: "Models", description: "ответственные за данные домена или слой доступа к данным, который манипулирует данными"),
+                                                Component(title: "Model", description: "ответственные за данные домена или слой доступа к данным, который манипулирует данными"),
                                             "View":
                                                 Component(title: "View", description: "Представление состоит из представлений и из контроллеров представлений, со всеми настройками пользовательского интерфейса и событиями."),
                                             "Presenter":
