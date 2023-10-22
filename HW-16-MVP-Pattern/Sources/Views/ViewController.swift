@@ -8,12 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController, ComponentPresenterDelegate  {
-
     
     // MARK: Outlets
     
     private let modalViewController = ModalViewController()
-    private let presenter = ComponentPresenter()
+    var presenter: ViewDelegate?
     private var components = [String: Component]()
     
     private lazy var titleLabel: UILabel = {
@@ -84,8 +83,7 @@ class ViewController: UIViewController, ComponentPresenterDelegate  {
         setupView()
         setupHierarchy()
         setupLayout()
-        presenter.setViewDelegate(delegate: self)
-        presenter.getComponentInfo()
+        fetchPresenterInfo()
     }
     
     // MARK: Setup
@@ -101,12 +99,15 @@ class ViewController: UIViewController, ComponentPresenterDelegate  {
     
     // MARK: Presenter Delegate
     
-    func presentComponent(components: [String: Component]) {
+    func presentComponents(components: [String: Component]) {
         self.components = components
     }
     
-    // MARK: Actions
+    func fetchPresenterInfo() {
+        presenter?.getComponentInfo()
+    }
     
+    // MARK: Actions
     
     func presentComponentInfo(title: String, description: String) {
         modalViewController.titleLabel.text = title
@@ -114,23 +115,23 @@ class ViewController: UIViewController, ComponentPresenterDelegate  {
     }
     
     @IBAction func modelOpenModalButtonTapped(_ sender: UIButton) {
-        present(modalViewController, animated: true, completion: nil)
+        present(modalViewController, animated: true)
         guard let component = components["Model"] else { return }
-        presenter.didTap(component: component)
+        presenter?.didTap(component: component)
     }
     
     @IBAction func viewOpenModalButtonTapped(_ sender: UIButton) {
-        present(modalViewController, animated: true, completion: nil)
+        present(modalViewController, animated: true)
         guard let component = components["View"] else { return }
-        presenter.didTap(component: component)
+        presenter?.didTap(component: component)
     }
     
     @IBAction func presenterOpenModalButtonTapped(_ sender: UIButton) {
-        present(modalViewController, animated: true, completion: nil)
+        present(modalViewController, animated: true)
         guard let component = components["Presenter"] else { return }
-        presenter.didTap(component: component)
+        presenter?.didTap(component: component)
     }
-
+    
     private func setupLayout() {
         
         NSLayoutConstraint.activate([
@@ -164,7 +165,7 @@ class ViewController: UIViewController, ComponentPresenterDelegate  {
             leftArrowView.heightAnchor.constraint(equalToConstant: 35),
         ])
     }
-
+    
 }
 
 extension ViewController {
